@@ -46,3 +46,7 @@ ksqldb demo
       LINE_1_STREAM A
       INNER JOIN LINE_2_STREAM B WITHIN 1 MINUTE ON A.AFTER->"CUS_NO" = B.AFTER->"CUS_NO"
      EMIT CHANGES;
+    
+# 한계점
+  * 조인 스트림 생성 시 스키마키가 정의되어 있어야함.  
+  * * 외부 소스 JDBC 연계의 한계가 있음. 

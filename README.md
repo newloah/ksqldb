@@ -17,19 +17,19 @@ ksqldb demo
     * state 성 데이터
 
 # 스트림 생성
-   CREATE STREAM LINE_1K_STREAM (
-     TABLE_NM VARCHAR,
-     OP_TYPE VARCHAR,
-     OP_TS VARCHAR,
-     CURRENT_TS VARCHAR,
-     AFTER STRUCT<
-       "TRAN_DT" VARCHAR,
-       "CUS_NO" VARCHAR,
-       "TRX_CD" VARCHAR
-     >
-   )
-   WITH (
-     KAFKA_TOPIC = 'line-1',
-     VALUE_FORMAT = 'JSON'
-   );
+    CREATE STREAM LINE_1K_STREAM (
+      TABLE_NM VARCHAR,
+      OP_TYPE VARCHAR,
+      OP_TS VARCHAR,
+      CURRENT_TS VARCHAR,
+      AFTER STRUCT<
+        "TRAN_DT" VARCHAR,
+        "CUS_NO" VARCHAR,
+        "TRX_CD" VARCHAR
+      >
+    )
+    WITH (
+      KAFKA_TOPIC = 'line-1',
+      VALUE_FORMAT = 'JSON'
+    );
   

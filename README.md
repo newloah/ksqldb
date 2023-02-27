@@ -32,4 +32,17 @@ ksqldb demo
       KAFKA_TOPIC = 'line-1',
       VALUE_FORMAT = 'JSON'
     );
-  
+ 
+ # 스트림 조인
+     SELECT
+      A.AFTER->"TRX_CD" TRX_CD,
+      A.TABLE_NM A_TABLE,
+      B.TABLE_NM B_TABLE,
+      A.AFTER->"CUS_NO" CUSNO,
+      B.AFTER->"AMT" AMT,
+      A.OP_TS A_OP_TS,
+      B.OP_TS B_OP_TS
+     FROM
+      LINE_1_STREAM A
+      INNER JOIN LINE_2_STREAM B WITHIN 1 MINUTE ON A.AFTER->"CUS_NO" = B.AFTER->"CUS_NO"
+     EMIT CHANGES;
